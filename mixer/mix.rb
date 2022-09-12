@@ -7,23 +7,16 @@ piano = read_wave("input/piano.wav")
 # Sum a number of tracks, we are assuming
 # they are all the exact same length
 def sum_tracks(*tracks)
-  [].tap do |out|
-    for i in 0..tracks.first.length do
-      # Start with zero
-      summed = 0
-
-      # Loop through all the tracks and increment
-      # the summed sample with its value
-      tracks.each do |track|
-        next unless track[i]
-        # Increment the summed sample, but first
-        # make it a bit less loud so we don't clip
-        summed += track[i] / 1.5
-      end
-
-      # Append the summed sample to the output
-      out << summed
+  tracks.first.map.with_index do |_, i|
+    summed = 0
+    # Loop through all the tracks and increment
+    # the summed sample with its value
+    tracks.each do |track|
+      # Increment the summed sample, but first
+      # make it a bit less loud so we don't clip
+      summed += track[i] / 1.5
     end
+    summed
   end
 end
 
