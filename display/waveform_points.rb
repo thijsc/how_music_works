@@ -1,5 +1,7 @@
 require_relative "../lib/all"
 
+# Draws each sample as a dot — shows how sparse individual
+# samples look before we connect them into a waveform
 cymbal = read_wave("input/cymbal.wav")
 
 image = ChunkyPNG::Image.new(WIDTH, HEIGHT, BLACK)

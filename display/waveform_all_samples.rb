@@ -1,5 +1,7 @@
 require_relative "../lib/all"
 
+# Draws a vertical line per sample — shows why we need to group
+# samples when there are more samples than pixels
 cymbal = read_wave("input/cymbal.wav")
 
 image = ChunkyPNG::Image.new(WIDTH, HEIGHT, BLACK)

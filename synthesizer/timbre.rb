@@ -1,18 +1,11 @@
 require_relative "../lib/all"
 
-# Create multiple oscillators
-one = Sine.new(220, SAMPLE_RATE)
-two = Square.new(220, SAMPLE_RATE)
+# Same pitch, different waveforms — this is what creates timbre
+sine = Sine.new(220, SAMPLE_RATE)
+square = Square.new(220, SAMPLE_RATE)
 
-# Create output array
-output = []
-
-0..SAMPLE_RATE.times do |i|
-  # Get the samples for all three notes
-  sample_one = one.next_sample / 3
-  sample_two = two.next_sample / 3
-
-  output << sample_one + sample_two
+output = SAMPLE_RATE.times.map do
+  sine.next_sample / 2 + square.next_sample / 2
 end
 
 write_wave("output/timbre.wav", output)

@@ -1,10 +1,7 @@
 require_relative "../lib/all"
 
-# Create output array
-output = []
-
-0..SAMPLE_RATE.times do
-  output << Random.rand(-30_000..30_000)
+output = SAMPLE_RATE.times.map do
+  Random.rand(-30_000..30_000)
 end
 
 write_wave("output/noise.wav", output)
